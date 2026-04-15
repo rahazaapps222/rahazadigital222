@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Embedded Content Mobile</title>
+  <style>
+    /* Menghilangkan sisa ruang kosong di pinggir layar */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden; /* Mencegah scroll pada body utama */
+      background-color: #f0f0f0; /* Warna latar belakang cadangan */
+    }
+
+    .iframe-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      -webkit-overflow-scrolling: touch; /* Scroll halus untuk iOS */
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="iframe-container">
+    <iframe 
+      src="https://script.google.com/macros/s/AKfycbwyaGiBrxTOqYUdtCaIH7ovmNyJMCYVgzu8C9jMZugRrTgEv9bIBEpkoN5eSpB38SKREg/exec"
+      allow="fullscreen"
+      allowfullscreen="true">
+    </iframe>
+  </div>
+
+  <script>
+    // Catatan: Otomatis Fullscreen saat load sering diblokir browser modern 
+    // kecuali ada interaksi user (klik). Script ini tetap saya sertakan.
+    window.onload = function() {
+      const docElm = document.documentElement;
+      const requestFullScreen = docElm.requestFullscreen || docElm.mozRequestFullScreen || docElm.webkitRequestFullScreen || docElm.msRequestFullscreen;
+      
+      // Jika ingin mencoba fullscreen otomatis:
+      if (requestFullScreen) {
+        // requestFullScreen.call(docElm).catch(err => {
+        //   console.log("Fullscreen otomatis biasanya butuh klik user terlebih dahulu.");
+        // });
+      }
+    };
+  </script>
+</body>
+</html>
